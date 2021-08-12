@@ -88,6 +88,7 @@ abstract class ProcessManager {
     Map<String, String>? environment,
     bool includeParentEnvironment = true,
     bool runInShell = false,
+    bool sanitize = true,
     ProcessStartMode mode = ProcessStartMode.normal,
   });
 
@@ -141,6 +142,7 @@ abstract class ProcessManager {
     Map<String, String>? environment,
     bool includeParentEnvironment = true,
     bool runInShell = false,
+    bool sanitize = true,
     Encoding stdoutEncoding = systemEncoding,
     Encoding stderrEncoding = systemEncoding,
   });
@@ -158,6 +160,7 @@ abstract class ProcessManager {
     Map<String, String>? environment,
     bool includeParentEnvironment = true,
     bool runInShell = false,
+    bool sanitize = true,
     Encoding stdoutEncoding = systemEncoding,
     Encoding stderrEncoding = systemEncoding,
   });

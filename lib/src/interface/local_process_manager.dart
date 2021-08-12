@@ -38,8 +38,8 @@ class LocalProcessManager implements ProcessManager {
     Map<String, String>? environment,
     bool includeParentEnvironment = true,
     bool runInShell = false,
-    ProcessStartMode mode = ProcessStartMode.normal,
     bool sanitize = true,
+    ProcessStartMode mode = ProcessStartMode.normal,
   }) {
     try {
       final String executable = _getExecutable(
@@ -69,9 +69,9 @@ class LocalProcessManager implements ProcessManager {
     Map<String, String>? environment,
     bool includeParentEnvironment = true,
     bool runInShell = false,
+    bool sanitize = true,
     Encoding stdoutEncoding = systemEncoding,
     Encoding stderrEncoding = systemEncoding,
-    bool sanitize = true,
   }) {
     try {
       final String executable = _getExecutable(
@@ -102,9 +102,9 @@ class LocalProcessManager implements ProcessManager {
     Map<String, String>? environment,
     bool includeParentEnvironment = true,
     bool runInShell = false,
+    bool sanitize = true,
     Encoding stdoutEncoding = systemEncoding,
     Encoding stderrEncoding = systemEncoding,
-    bool sanitize = true,
   }) {
     try {
       final String executable = _getExecutable(
