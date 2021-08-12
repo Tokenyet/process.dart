@@ -39,14 +39,16 @@ class LocalProcessManager implements ProcessManager {
     bool includeParentEnvironment = true,
     bool runInShell = false,
     ProcessStartMode mode = ProcessStartMode.normal,
+    bool sanitize = true,
   }) {
     try {
+      final String executable = _getExecutable(
+        command,
+        workingDirectory,
+        runInShell,
+      );
       return Process.start(
-        sanitizeExecutablePath(_getExecutable(
-          command,
-          workingDirectory,
-          runInShell,
-        )),
+        sanitize ? sanitizeExecutablePath(executable) : executable,
         _getArguments(command),
         workingDirectory: workingDirectory,
         environment: environment,
@@ -69,14 +71,16 @@ class LocalProcessManager implements ProcessManager {
     bool runInShell = false,
     Encoding stdoutEncoding = systemEncoding,
     Encoding stderrEncoding = systemEncoding,
+    bool sanitize = true,
   }) {
     try {
+      final String executable = _getExecutable(
+        command,
+        workingDirectory,
+        runInShell,
+      );
       return Process.run(
-        sanitizeExecutablePath(_getExecutable(
-          command,
-          workingDirectory,
-          runInShell,
-        )),
+        sanitize ? sanitizeExecutablePath(executable) : executable,
         _getArguments(command),
         workingDirectory: workingDirectory,
         environment: environment,
@@ -100,14 +104,16 @@ class LocalProcessManager implements ProcessManager {
     bool runInShell = false,
     Encoding stdoutEncoding = systemEncoding,
     Encoding stderrEncoding = systemEncoding,
+    bool sanitize = true,
   }) {
     try {
+      final String executable = _getExecutable(
+        command,
+        workingDirectory,
+        runInShell,
+      );
       return Process.runSync(
-        sanitizeExecutablePath(_getExecutable(
-          command,
-          workingDirectory,
-          runInShell,
-        )),
+        sanitize ? sanitizeExecutablePath(executable) : executable,
         _getArguments(command),
         workingDirectory: workingDirectory,
         environment: environment,
