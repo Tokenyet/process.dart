@@ -115,7 +115,7 @@ class LocalProcessManager implements ProcessManager {
   }) {
     try {
       if (Platform.isLinux || Platform.isMacOS) {
-        command = <Object>['bash', '-c', ...command];
+        command = <Object>['bash', '-c', command.join(' ')];
       }
       final String executable = _getExecutable(
         command,
