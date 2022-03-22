@@ -5,18 +5,19 @@
 import 'dart:convert';
 import 'dart:io'
     show
+        Platform,
         Process,
+        ProcessException,
         ProcessResult,
         ProcessSignal,
         ProcessStartMode,
-        ProcessException,
         systemEncoding;
 
 import 'package:process/process.dart';
 
 import 'common.dart';
-import 'exceptions.dart';
-import 'process_manager.dart';
+// import 'exceptions.dart';
+// import 'process_manager.dart';
 
 /// Local implementation of the `ProcessManager` interface.
 ///
@@ -42,6 +43,9 @@ class LocalProcessManager implements ProcessManager {
     ProcessStartMode mode = ProcessStartMode.normal,
   }) {
     try {
+      if (Platform.isLinux || Platform.isMacOS) {
+        command = <Object>['bash', '-c', ...command];
+      }
       final String executable = _getExecutable(
         command,
         workingDirectory,
@@ -74,6 +78,9 @@ class LocalProcessManager implements ProcessManager {
     Encoding stderrEncoding = systemEncoding,
   }) {
     try {
+      if (Platform.isLinux || Platform.isMacOS) {
+        command = <Object>['bash', '-c', ...command];
+      }
       final String executable = _getExecutable(
         command,
         workingDirectory,
@@ -107,6 +114,9 @@ class LocalProcessManager implements ProcessManager {
     Encoding stderrEncoding = systemEncoding,
   }) {
     try {
+      if (Platform.isLinux || Platform.isMacOS) {
+        command = <Object>['bash', '-c', ...command];
+      }
       final String executable = _getExecutable(
         command,
         workingDirectory,

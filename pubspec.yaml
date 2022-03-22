@@ -1,5 +1,5 @@
 name: process
-version: 4.2.3
+version: 4.2.4
 description: A pluggable, mockable process invocation abstraction for Dart.
 homepage: https://github.com/google/process.dart
 
